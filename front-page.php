@@ -7,32 +7,33 @@
 			<div class="swiper-container slide-bner">
 
 			    <div class="swiper-wrapper">
+					<?php $slide_show = get_field('slide_show', 'option') ?>
+					<?php foreach ($slide_show as $key => $value) { ?>
+						<div class="swiper-slide">
+						<div class="avarta">
+							<a href=""><img src="<?php echo $value['url'] ?>"
+									width="100%" class="img-fluid" alt="<?php echo $value['alt'] ?>"></a>
+						</div>
 
-			      <div class="swiper-slide">
+						<div class="caption-slide">
 
-			      	<div class="avarta">
+							<div class="left">
 
-						<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/banner-slide.png" width="100%" class="img-fluid" alt=""></a>
+								<div class="info-slide">
 
-					</div>
+									<div class="container">
 
-					<div class="caption-slide">
+										<div class="content-left">
 
-						<div class="left">
+											<h3><?php echo $value['caption'] ?></h3>
 
-							<div class="info-slide">
+											<h1><?php echo $value['title'] ?></h1>
 
-								<div class="container">
+											<div class="btn-form">
 
-									<div class="content-left">
+												<a href="<?php bloginfo( 'url' ); ?>#regist">ĐẶT LỊCH KHÁM</a>
 
-										<h3>BỆNH VIỆN ĐA KHOA HUYỆN TRIỆU SƠN</h3>
-
-										<h1>Niềm tin cho người bệnh</h1>
-
-										<div class="btn-form">
-
-											<a href="">ĐẶT LỊCH KHÁM</a>
+											</div>
 
 										</div>
 
@@ -42,121 +43,20 @@
 
 							</div>
 
-						</div>
-
-						<div class="place">
-
-							<div class="container">
-
-								<p>dốc miếu - thị trấn Giắt - huyện triệu sơn - tỉnh thanh hóa     |      ĐIỆN THOẠI: 09234 444 323</p>
-
-							</div>
-
-						</div>
-
-					</div>
-
-			      </div>
-
-			      <div class="swiper-slide">
-
-			      	<div class="avarta">
-
-						<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/banner-slide.png" width="100%" class="img-fluid" alt=""></a>
-
-					</div>
-
-					<div class="caption-slide">
-
-						<div class="left">
-
-							<div class="info-slide">
+							<div class="place">
 
 								<div class="container">
 
-									<div class="content-left">
-
-										<h3>BỆNH VIỆN ĐA KHOA HUYỆN TRIỆU SƠN</h3>
-
-										<h1>Niềm tin cho người bệnh</h1>
-
-										<div class="btn-form">
-
-											<a href="">ĐẶT LỊCH KHÁM</a>
-
-										</div>
-
-									</div>
+									<p><?php echo $value['description'] ?></p>
 
 								</div>
 
 							</div>
 
 						</div>
-
-						<div class="place">
-
-							<div class="container">
-
-								<p>dốc miếu - thị trấn Giắt - huyện triệu sơn - tỉnh thanh hóa     |      ĐIỆN THOẠI: 09234 444 323</p>
-
-							</div>
-
 						</div>
+					<?php } ?>
 
-					</div>
-
-			      </div>
-
-			      <div class="swiper-slide">
-
-			      	<div class="avarta">
-
-						<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/banner-slide.png" width="100%" class="img-fluid" alt=""></a>
-
-					</div>
-
-					<div class="caption-slide">
-
-						<div class="left">
-
-							<div class="info-slide">
-
-								<div class="container">
-
-									<div class="content-left">
-
-										<h3>BỆNH VIỆN ĐA KHOA HUYỆN TRIỆU SƠN</h3>
-
-										<h1>Niềm tin cho người bệnh</h1>
-
-										<div class="btn-form">
-
-											<a href="">ĐẶT LỊCH KHÁM</a>
-
-										</div>
-
-									</div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="place">
-
-							<div class="container">
-
-								<p>dốc miếu - thị trấn Giắt - huyện triệu sơn - tỉnh thanh hóa     |      ĐIỆN THOẠI: 09234 444 323</p>
-
-							</div>
-
-						</div>
-
-					</div>
-
-			      </div>
 
 			    </div>
 
@@ -177,150 +77,28 @@
 			<div class="container-fluid">
 
 				<div class="row">
-
-					<div class="col-md-2">
-
-						<div class="item">
-
-							<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/bn2.png" class="img-fluid" alt=""></div>
-
-							<div class="caption">
-
-								<div class="info">
-
-									<div class="icon"><img src="<?php bloginfo('template_directory'); ?>/images/service1-1.png" class="img-fluid img-hid" alt=""></div>
-
-									<div class="icon img-hov"><img src="<?php bloginfo('template_directory'); ?>/images/service1.png" class="img-fluid" alt=""></div>
-
-									<div class="title"><h2><a href="service.html">Thai sản trọn gói</a></h2></div>
+					<?php $args = array( 'post_type' => 'dich-vu', 'posts_per_page' => 6, 'post_status' => 'publish'); ?>
+					<?php $getposts = new WP_query( $args);?>
+					<?php global $wp_query; $wp_query->in_the_loop = true; ?>
+					<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+						<div class="col-md-2">
+							<div class="item">
+								<div class="avarta">
+									<img src='<?php echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );?>' class="img-fluid" alt='<?php the_title(); ?>' />
+								</div>
+								<div class="caption">
+									<div class="info">
+										<div class="icon"><img src="<?php the_field('icon') ?>" class="img-fluid img-hid" alt="<?php the_title(); ?>"></div>
+										<div class="icon img-hov"><img src="<?php the_field('icon') ?>" class="img-fluid class-w" alt="<?php the_title(); ?>"></div>
+										<div class="title"><h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2></div>
+									</div>
 
 								</div>
 
 							</div>
 
 						</div>
-
-					</div>
-
-					<div class="col-md-2">
-
-						<div class="item">
-
-							<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/bn2.png" class="img-fluid" alt=""></div>
-
-							<div class="caption">
-
-								<div class="info">
-
-									<div class="icon"><img src="<?php bloginfo('template_directory'); ?>/images/service2.png" class="img-fluid img-hid" alt=""></div>
-
-									<div class="icon img-hov"><img src="<?php bloginfo('template_directory'); ?>/images/service2-1.png" class="img-fluid" alt=""></div>
-
-									<div class="title"><h2><a href="service.html">điều trị ung thư</a></h2></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-2">
-
-						<div class="item">
-
-							<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/bn2.png" class="img-fluid" alt=""></div>
-
-							<div class="caption">
-
-								<div class="info">
-
-									<div class="icon"><img src="<?php bloginfo('template_directory'); ?>/images/service3.png" class="img-fluid img-hid" alt=""></div>
-
-									<div class="icon img-hov"><img src="<?php bloginfo('template_directory'); ?>/images/service3-1.png" class="img-fluid" alt=""></div>
-
-									<div class="title"><h2><a href="service.html">khám tổng quát</a></h2></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-2">
-
-						<div class="item">
-
-							<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/bn2.png" class="img-fluid" alt=""></div>
-
-							<div class="caption">
-
-								<div class="info">
-
-									<div class="icon"><img src="<?php bloginfo('template_directory'); ?>/images/service4.png" class="img-fluid img-hid" alt=""></div>
-
-									<div class="icon img-hov"><img src="<?php bloginfo('template_directory'); ?>/images/service4-1.png" class="img-fluid" alt=""></div>
-
-									<div class="title"><h2><a href="service.html">khoa nhi</a></h2></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-2">
-
-						<div class="item">
-
-							<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/bn2.png" class="img-fluid" alt=""></div>
-
-							<div class="caption">
-
-								<div class="info">
-
-									<div class="icon"><img src="<?php bloginfo('template_directory'); ?>/images/service5.png" class="img-fluid img-hid" alt=""></div>
-
-									<div class="icon img-hov"><img src="<?php bloginfo('template_directory'); ?>/images/service5-1.png" class="img-fluid" alt=""></div>
-
-									<div class="title"><h2><a href="service.html">khoa tai mũ họng</a></h2></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-2">
-
-						<div class="item">
-
-							<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/bn2.png" class="img-fluid" alt=""></div>
-
-							<div class="caption">
-
-								<div class="info">
-
-									<div class="icon"><img src="<?php bloginfo('template_directory'); ?>/images/service6.png" class="img-fluid img-hid" alt=""></div>
-
-									<div class="icon img-hov"><img src="<?php bloginfo('template_directory'); ?>/images/service6-1.png" class="img-fluid" alt=""></div>
-
-									<div class="title"><h2><a href="service.html">chăm sóc nha khoa</a></h2></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
+					<?php endwhile; wp_reset_postdata(); ?>
 
 				</div>
 
@@ -341,94 +119,32 @@
 					<div class="swiper-container slide-news">
 
 					    <div class="swiper-wrapper">
+							<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 10, 'post_status' => 'publish'); ?>
+							<?php $getposts = new WP_query( $args);?>
+							<?php global $wp_query; $wp_query->in_the_loop = true; ?>
+							<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
 
-					      <div class="swiper-slide">
+								<div class="swiper-slide">
+									<div class="item">
+										<div class="avarta">
+											<a href="<?php the_permalink(); ?>">
+												<img src='<?php echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );?>' alt='<?php the_title(); ?>' class="img-fluid" />
+											</a>
+										</div>
+										<div class="info">
+											<h3>
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+												</a>
+											</h3>
+											<div class="date-time">
+												<span><?php echo get_the_date('d.m.Y')?></span>
+											</div>
+										</div>
+									</div>
+								</div>
+						
+							<?php endwhile; wp_reset_postdata(); ?>
 
-					      	<div class="item">
-
-					      		<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo('template_directory'); ?>/images/new1.png" class="img-fluid" alt=""></a></div>
-
-					      		<div class="info">
-
-					      			<h3><a href="detail-new.html">Hội thảo thai sản: Gỡ rối 1001 bỡ ngỡ lần đầu mang thai, nhận quà hấp dẫn</a></h3>
-
-					      			<div class="date-time">
-
-					      				<span>12.1.2019</span>
-
-					      			</div>
-
-					      		</div>
-
-					      	</div>
-
-					      </div>
-
-					      <div class="swiper-slide">
-
-					      	<div class="item">
-
-					      		<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo('template_directory'); ?>/images/new1.png" class="img-fluid" alt=""></a></div>
-
-					      		<div class="info">
-
-					      			<h3><a href="detail-new.html">Hội thảo thai sản: Gỡ rối 1001 bỡ ngỡ lần đầu mang thai, nhận quà hấp dẫn</a></h3>
-
-					      			<div class="date-time">
-
-					      				<span>12.1.2019</span>
-
-					      			</div>
-
-					      		</div>
-
-					      	</div>
-
-					      </div>
-
-					      <div class="swiper-slide">
-
-					      	<div class="item">
-
-					      		<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo('template_directory'); ?>/images/new1.png" class="img-fluid" alt=""></a></div>
-
-					      		<div class="info">
-
-					      			<h3><a href="detail-new.html">Hội thảo thai sản: Gỡ rối 1001 bỡ ngỡ lần đầu mang thai, nhận quà hấp dẫn</a></h3>
-
-					      			<div class="date-time">
-
-					      				<span>12.1.2019</span>
-
-					      			</div>
-
-					      		</div>
-
-					      	</div>
-
-					      </div>
-
-					      <div class="swiper-slide">
-
-					      	<div class="item">
-
-					      		<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo('template_directory'); ?>/images/new1.png" class="img-fluid" alt=""></a></div>
-
-					      		<div class="info">
-
-					      			<h3><a href="detail-new.html">Hội thảo thai sản: Gỡ rối 1001 bỡ ngỡ lần đầu mang thai, nhận quà hấp dẫn</a></h3>
-
-					      			<div class="date-time">
-
-					      				<span>12.1.2019</span>
-
-					      			</div>
-
-					      		</div>
-
-					      	</div>
-
-					      </div>
 
 					    </div>
 
@@ -459,60 +175,21 @@
 							<div class="col-md-4">
 
 								<div class="left pull-left">
+									<?php $info_home = get_field('info_home','option')?>
+									<?php foreach ($info_home as $key => $value) { ?>
+										<?php if($key < 3 ) { ?>
+											<div class="item">
+												<div class="heart">
+													<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
+												</div>
+												<div class="info">
+													<h3><?php echo $value['title'] ?></h3>
+													<p><?php echo $value['content'] ?></p>
+												</div>
+											</div>
+										<?php } ?>
+									<?php } ?>
 
-									<div class="item">
-
-										<div class="heart">
-
-											<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
-
-										</div>
-
-										<div class="info">
-
-											<h3>CHẤT LƯỢNG PHỤC VỤ TỐT</h3>
-
-											<p>Như một loại kháng sinh tự nhiên có khả năng chống viêm đặc hiệu</p>
-
-										</div>
-
-									</div>
-
-									<div class="item">
-
-										<div class="heart">
-
-											<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
-
-										</div>
-
-										<div class="info">
-
-											<h3>QUI TRÌNH KHÉP KÍN</h3>
-
-											<p>Như một loại kháng sinh tự nhiên có khả năng chống viêm đặc hiệu</p>
-
-										</div>
-
-									</div>
-
-									<div class="item">
-
-										<div class="heart">
-
-											<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
-
-										</div>
-
-										<div class="info">
-
-											<h3>ĐỘI NGŨ CHUYÊN MÔN CAO</h3>
-
-											<p>Như một loại kháng sinh tự nhiên có khả năng chống viêm đặc hiệu</p>
-
-										</div>
-
-									</div>
 
 								</div>
 
@@ -539,61 +216,20 @@
 							<div class="col-md-4">
 
 								<div class="right pull-right">
-
-									<div class="item">
-
-										<div class="heart">
-
-											<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
-
-										</div>
-
-										<div class="info">
-
-											<h3>TRANG THIẾT BỊ HIỆN ĐẠI</h3>
-
-											<p>Như một loại kháng sinh tự nhiên có khả năng chống viêm đặc hiệu</p>
-
-										</div>
-
-									</div>
-
-									<div class="item">
-
-										<div class="heart">
-
-											<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
-
-										</div>
-
-										<div class="info">
-
-											<h3>CÔNG NGHỆ TIÊN TIẾN</h3>
-
-											<p>Như một loại kháng sinh tự nhiên có khả năng chống viêm đặc hiệu</p>
-
-										</div>
-
-									</div>
-
-									<div class="item">
-
-										<div class="heart">
-
-											<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
-
-										</div>
-
-										<div class="info">
-
-											<h3>ĐỘI NGŨ CHUYÊN MÔN CAO	</h3>
-
-											<p>Như một loại kháng sinh tự nhiên có khả năng chống viêm đặc hiệu</p>
-
-										</div>
-
-									</div>
-
+									<?php $info_home = get_field('info_home','option')?>
+									<?php foreach ($info_home as $key => $value) { ?>
+										<?php if($key > 2 ) { ?>
+											<div class="item">
+												<div class="heart">
+													<div class="avarta"><img src="<?php bloginfo('template_directory'); ?>/images/heart.png" class="img-fluid" alt=""></div>
+												</div>
+												<div class="info">
+													<h3><?php echo $value['title'] ?></h3>
+													<p><?php echo $value['content'] ?></p>
+												</div>
+											</div>
+										<?php } ?>
+									<?php } ?>
 								</div>
 
 							</div>
@@ -618,7 +254,7 @@
 
 				<div class="container">
 
-					<form action="">
+					<div >
 
 						<div class="row">
 
@@ -643,68 +279,13 @@
 									</div>
 
 									<div class="list-item">
-
-										<div class="item">
-
-											<label for="">Họ tên</label>
-
-											<input type="text" class="form-control">
-
-										</div>
-
-										<div class="item">
-
-											<label for="">Điện thoại</label>
-
-											<input type="text" class="form-control">
-
-										</div>
-
-										<div class="item">
-
-											<label for="">Ngày đến khám hoặc tư vấn</label>
-
-											<input type="date" class="form-control" placeholder="dd/mm/yyyy">
-
-										</div>
-
-										<div class="item">
-
-											<label for="">Chọn cơ sở</label>
-
-											<select name="" class="form-control" id="">
-
-												<option value="">BV ĐK Triệu Sơn cơ sở 1</option>
-
-												<option value="">BV ĐK Triệu Sơn cơ sở 2</option>
-
-												<option value="">BV ĐK Triệu Sơn cơ sở 3</option>
-
-												<option value="">BV ĐK Triệu Sơn cơ sở 4</option>
-
-											</select>
-
-										</div>
-
-										<div class="item">
-
-											<div class="btn-sub">
-
-												<input type="submit" value="ĐẶT LỊCH">
-
-											</div>
-
-										</div>
-
+										<?php echo do_shortcode( '[contact-form-7 id="0aac43a" title="Forn liên hệ"]' ); ?>
 									</div>
-
 								</div>
-
 							</div>
-
 						</div>
 
-					</form>
+					</div>
 
 				</div>
 

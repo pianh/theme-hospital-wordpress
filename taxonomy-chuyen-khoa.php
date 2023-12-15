@@ -1,9 +1,3 @@
-<?php
-/*
-Template name: Liên hệ
-Template Post Type: page
-*/
-?>
 <?php get_header(); ?>
 <main>
     		<section id="bn-cate">

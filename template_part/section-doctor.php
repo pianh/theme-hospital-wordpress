@@ -13,97 +13,22 @@
 						<div class="swiper-container slide-doctor">
 
 						    <div class="swiper-wrapper">
-
-						      <div class="swiper-slide">
-
-						      	<div class="item">
-
-						      		<div class="avarta"><a href=""><img src="<?php bloginfo("template_directory") ?>/images/slide.png" width="100%" class="img-fluid" alt=""></a></div>
-
-						      		<div class="info">
-
-						      			<div class="name">Bác sĩ Phạm Thế Anh</div>
-
-						      			<div class="room">GĐ Chuyên khoa ngoại</div>
-
-						      		</div>
-
-						      	</div>
-
-						      </div>
-
-						      <div class="swiper-slide">
-
-						      	<div class="item">
-
-						      		<div class="avarta"><a href=""><img src="<?php bloginfo("template_directory") ?>/images/slide.png" width="100%" class="img-fluid" alt=""></a></div>
-
-						      		<div class="info">
-
-						      			<div class="name">Bác sĩ Phạm Thế Anh</div>
-
-						      			<div class="room">GĐ Chuyên khoa ngoại</div>
-
-						      		</div>
-
-						      	</div>
-
-						      </div>
-
-						      <div class="swiper-slide">
-
-						      	<div class="item">
-
-						      		<div class="avarta"><a href=""><img src="<?php bloginfo("template_directory") ?>/images/slide.png" width="100%" class="img-fluid" alt=""></a></div>
-
-						      		<div class="info">
-
-						      			<div class="name">Bác sĩ Phạm Thế Anh</div>
-
-						      			<div class="room">GĐ Chuyên khoa ngoại</div>
-
-						      		</div>
-
-						      	</div>
-
-						      </div>
-
-						      <div class="swiper-slide">
-
-						      	<div class="item">
-
-						      		<div class="avarta"><a href=""><img src="<?php bloginfo("template_directory") ?>/images/slide.png" width="100%" class="img-fluid" alt=""></a></div>
-
-						      		<div class="info">
-
-						      			<div class="name">Bác sĩ Phạm Thế Anh</div>
-
-						      			<div class="room">GĐ Chuyên khoa ngoại</div>
-
-						      		</div>
-
-						      	</div>
-
-						      </div>
-
-						      <div class="swiper-slide">
-
-						      	<div class="item">
-
-						      		<div class="avarta"><a href=""><img src="<?php bloginfo("template_directory") ?>/images/slide.png" width="100%" class="img-fluid" alt=""></a></div>
-
-						      		<div class="info">
-
-						      			<div class="name">Bác sĩ Phạm Thế Anh</div>
-
-						      			<div class="room">GĐ Chuyên khoa ngoại</div>
-
-						      		</div>
-
-						      	</div>
-
-						      </div>
-
+								<?php $args = array( 'post_type' => 'bac-si', 'posts_per_page' => 10, 'post_status' => 'publish'); ?>
+								<?php $getposts = new WP_query( $args);?>
+								<?php global $wp_query; $wp_query->in_the_loop = true; ?>
+								<?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+									<div class="swiper-slide">
+										<div class="item">
+											<div class="avarta">
+													<img class="img-fluid" src='<?php echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );?>' alt='<?php the_title(); ?>' />
+											</div>
+											<div class="info">
+												<div class="name"><?php the_title(); ?></div>
+												<div class="room"><?php echo get_field('position'); ?></div>
+											</div>
+										</div>
+									</div>
+								<?php endwhile; wp_reset_postdata(); ?>
 						    </div>
 
 						    <!-- Add Pagination -->

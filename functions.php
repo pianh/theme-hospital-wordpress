@@ -1,4 +1,5 @@
 <?php 
+// 47p-14
     require get_theme_file_path('/inc/rest-api.php');  // Inc rest-api.php file
 
     function load_assets() {
@@ -7,8 +8,10 @@
         wp_enqueue_style("fontAwesome", get_theme_file_uri('/css/font-awesome.css'), array(), "4.5.1", "all");
         wp_enqueue_style("swiper", get_theme_file_uri('/css/swiper.min.css'), array(), "4.5.1", "all");
 
-        wp_enqueue_style("cssCustom", get_theme_file_uri('/css/style.css'), array(), "1.0.0", "all");
+        wp_enqueue_style("cssStyle", get_theme_file_uri('/css/style.css'), array(), "1.0.0", "all");
         wp_enqueue_style("cssCustomResponsive", get_theme_file_uri('/css/reponsive.css'), array(), "1.0.0", "all");
+        wp_enqueue_style("cssCustom", get_theme_file_uri('/css/custom.css'), array(), "1.0.0", "all");
+
         
         // import js file
         wp_enqueue_script("jQueryJs", get_theme_file_uri() . '/assets/vendors/js/jquery.min.js', array('jquery'), "5.0.2", true);

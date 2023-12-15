@@ -11,9 +11,9 @@
 
 					<div class="info">
 
-						<div class="icon"><img src="<?php bloginfo("template_directory") ?>/images/service1.png" class="img-fluid" alt=""></div>
+						<div class="icon"><img src="<?php the_field('icon') ?>" class="img-fluid" alt=""></div>
 
-						<h1>Thai sản trọn gói</h1>
+						<h1><?php the_title(); ?></h1>
 
 						<div class="book-now">
 

@@ -5,54 +5,19 @@
 			<div class="container">
 
 				<div class="row">
+					<?php $branch = get_field('chi_nhanh','option') ?>
+					<?php foreach ($branch as $key => $value) { ?>
+						<div class="col-md-4">
 
-					<div class="col-md-4">
-
-						<div class="item">
-
-							<div class="title">BV ĐA KHOA TRIỆU SƠN CƠ SỞ 1	</div>
-
-							<p><i class="fa fa-map-marker"></i>Địa chỉ: Số 55 Yên Ninh,Trúc Bạch, Ba Đình, HN</p>
-
-							<p><i class="fa fa-phone"></i>Tel:+(84-24) 3927 5568</p>
-
-							<p><i class="fa fa-home"></i>Email: coso1.info@gmail.com</p>
+							<div class="item">
+								<div class="title"><?php echo $value['ten_chi_nhanh'] ?></div>
+								<p><i class="fa fa-map-marker"></i><?php echo $value['dia_chi'] ?></p>
+								<p><i class="fa fa-phone"></i><?php echo $value['so_dien_thoai'] ?></p>
+								<p><i class="fa fa-home"></i><?php echo $value['email'] ?></p>
+							</div>
 
 						</div>
-
-					</div>
-
-					<div class="col-md-4">
-
-						<div class="item">
-
-							<div class="title">BV ĐA KHOA TRIỆU SƠN CƠ SỞ 2	</div>
-
-							<p><i class="fa fa-map-marker"></i>Địa chỉ: Số 55 Yên Ninh,Trúc Bạch, Ba Đình, HN</p>
-
-							<p><i class="fa fa-phone"></i>Tel:+(84-24) 3927 5568</p>
-
-							<p><i class="fa fa-home"></i>Email: coso1.info@gmail.com</p>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4">
-
-						<div class="item">
-
-							<div class="title">BV ĐA KHOA TRIỆU SƠN CƠ SỞ 3	</div>
-
-							<p><i class="fa fa-map-marker"></i>Địa chỉ: Số 55 Yên Ninh,Trúc Bạch, Ba Đình, HN</p>
-
-							<p><i class="fa fa-phone"></i>Tel:+(84-24) 3927 5568</p>
-
-							<p><i class="fa fa-home"></i>Email: coso1.info@gmail.com</p>
-
-						</div>
-
-					</div>
+					<?php } ?>
 
 					<div class="col-md-12">
 

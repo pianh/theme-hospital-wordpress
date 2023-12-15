@@ -1,0 +1,76 @@
+body header .header-menu ul.fix-logo li:last-child {
+    float: left;
+}
+
+body header .header-menu ul.fix-menu li:last-child {
+    float: inherit;
+}
+
+body header .header-menu ul.fix-menu li:first-child a:after {
+    display: block;
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.3s all;
+}
+
+body header .header-menu ul.fix-menu li:first-child {
+    background: none;
+    padding-right: 15px;
+}
+
+body header .header-menu ul.fix-search li:last-child {
+    float: right;
+}
+
+body header .header-menu ul.fix-menu li.current-menu-item a {
+    color: #fff;
+}
+
+body header .header-menu ul.fix-menu li.current-menu-item a:after {
+    width: 100%;
+}
+
+body header .header-menu ul.fix-menu li a:hover:after {
+    transition: 0.3s all;
+    width: 100%;
+}
+
+.header-menu .container {
+    position: relative;
+}
+
+ul.list-inline.fix-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+}
+
+ul.list-inline.fix-search li {
+    background: none;
+}
+
+body header .header-menu ul.fix-search li:first-child {
+    background: none;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+body header .header-menu ul li .form-seaarch.show-box-search {
+    z-index: 99;
+    visibility: visible;
+    opacity: 1;
+}
+
+body header .header-menu ul.fix-search li:first-child {
+    clip-path: none;
+}
+
+img.img-fluid.class-w {
+    filter: brightness(0) invert(1) !important;
+}

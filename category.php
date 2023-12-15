@@ -1,20 +1,14 @@
+<!-- Trang tin tức -->
 <?php get_header(); ?>
 
 <main>
 		<section id="bn-cate">
-
 			<div class="avarta"><img src="<?php bloginfo("template_directory") ?>/images/slide12.jpg" class="img-fluid" width="100%" alt=""></div>
-
 			<div class="container">
-
 				<div class="title-cate">
-
-					<span>tin tức</span>
-
+					<span>Tin tức</span>
 				</div>
-
 			</div>
-
 		</section>
 
 
