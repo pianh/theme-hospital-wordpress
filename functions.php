@@ -1,5 +1,5 @@
 <?php 
-// 47p-14
+// 13p-15
     require get_theme_file_path('/inc/rest-api.php');  // Inc rest-api.php file
 
     function load_assets() {
@@ -30,10 +30,20 @@
         // Đăng ký sidebar
         if (function_exists('register_sidebar')){
             register_sidebar(array(
-            'name'=> __( 'Sidebar', 'leo' ),
+            'name'=> __( 'Sidebar top', 'leo' ),
             'id' => 'sidebar',
             'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'textdomain' ),
-            'before_widget' => '<div class="widget">',
+            'before_widget' => '<div class="ads">',
+            'after_widget'  => "</div>",
+            'before_title'  => '<h3 class="title">',
+            'after_title'   => "</h3>",
+            ));
+
+            register_sidebar(array(
+            'name'=> __( 'Sidebar bottom', 'leo' ),
+            'id' => 'sidebar_2',
+            // 'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'textdomain' ),
+            'before_widget' => '<div class="ads">',
             'after_widget'  => "</div>",
             'before_title'  => '<h3 class="title">',
             'after_title'   => "</h3>",
@@ -66,3 +76,23 @@
     }
 
     
+// add ads into wordpress
+// add_filter('the_content', 'wpse_ad_content');
+function wpse_ad_content($content)
+{
+    if (!is_single()) return $content;
+    $paragraphAfter = 2; //Enter number of paragraphs to display ad after.
+    $content = explode("</p>", $content);
+    $new_content = ''  ;
+    for ($i = 0; $i < count($content); $i++) {
+        if ($i == $paragraphAfter) {
+            $new_content.= '<div style="width: 300px; height: 250px; padding: 6px 6px 6px 0; float: left; margin-left: 0; margin-right: 18px;">';
+            $new_content.= '//Enter your ad code here....';
+            $new_content.= '</div>';
+        }
+
+        $new_content.= $content[$i] . "</p>";
+    }
+
+    return $new_content;
+}

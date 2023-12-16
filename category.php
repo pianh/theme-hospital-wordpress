@@ -6,7 +6,7 @@
 			<div class="avarta"><img src="<?php bloginfo("template_directory") ?>/images/slide12.jpg" class="img-fluid" width="100%" alt=""></div>
 			<div class="container">
 				<div class="title-cate">
-					<span>Tin tức</span>
+					<span><?php single_cat_title(); ?></span>
 				</div>
 			</div>
 		</section>
@@ -14,195 +14,68 @@
 
 
 		<section id="news-cate">
-
 			<div class="content">
-
 				<div class="container">
-
 					<div class="row">
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
+						<?php if (have_posts()) : ?>
+						<?php while (have_posts()) : the_post(); ?>
+							<div class="col-md-4 col-xs-6 col-sm-6">
+								<?php get_template_part('template_part/item') ?>
 							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-xs-6 col-sm-6">
-
-							<div class="item">
-
-								<div class="avarta"><a href="detail-new.html"><img src="<?php bloginfo("template_directory") ?>/images/n1.png" class="img-fluid" alt=""></a></div>
-
-								<div class="info">
-
-									<h3><a href="detail-new.html">Cách chữa bệnh phụ khoa nữ tại nhà bằng mẹo dân gian bạn cần biết</a></h3>
-
-									<div class="time"><span>12.1.2019</span></div>
-
-								</div>
-
-							</div>
-
-						</div>
-
+						<?php endwhile; else : ?>
+						 <p>Không có bài viết nào trong chuyên mục!</p>
+						<?php endif; ?>
 					</div>
+					
+					<?php
+						// global $wp_query;
+						// $big = 999999999;
+						// $pagination_args = array(
+						// 	'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+						// 	  'format' => '?paged=%#%',
+						// 	  'prev_text'    => __('«'),
+						// 	  'next_text'    => __('»'),
+						// 	  'current' => max( 1, get_query_var('paged') ),
+						// 	  'total' => $wp_query->max_num_pages,
+						// 	  'before_page_number' => '<li class="list-inline-item">',
+						// 	  'after_page_number' => '</li>',
+						// );
+						// echo '<div class="pagination">';
+						// echo '<ul class="list-inline">';
+						// echo paginate_links($pagination_args);
+						// echo '</ul>';
+						// echo '</div>';
+					?>
 
-					<div class="pagination">
+					<?php if(paginate_links()!='') { ?>
+					  <div class="pagination">
+						<?php
+						  global $wp_query;
+						  $big = 999999999;
+						  echo paginate_links( 
+							array(
+							  'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+							  'format' => '?paged=%#%',
+							  'prev_text'    => __('«'),
+							  'next_text'    => __('»'),
+							  'current' => max( 1, get_query_var('paged') ),
+							  'total' => $wp_query->max_num_pages
+							) 
+						  );
+						?>
+					  </div>
+					<?php } ?>
 
+
+					<!-- <div class="pagination">
 						<ul class="list-inline">
-
 							<li class="list-inline-item"><a href="#" class="active">1</a></li>
-
 							<li class="list-inline-item"><a href="#" class="">2</a></li>
-
 							<li class="list-inline-item"><a href="#" class="">3</a></li>
-
 							<li class="list-inline-item"><a href="#" class="">4</a></li>
-
 						</ul>
-
-					</div>
-
+					</div> -->
 				</div>
-
 			</div>
 
 		</section>

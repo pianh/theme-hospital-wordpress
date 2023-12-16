@@ -8,7 +8,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php (!is_tag()) && body_class() ?>>
 	<header>
 		<div class="header-top">
 			<div class="container">
